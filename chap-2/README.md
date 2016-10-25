@@ -60,11 +60,15 @@ The code above is the base for creating a linked list node. There are other meth
 - Delete
 - shallow/deep copying
 
-
 ##Applications
 
 What's the point in linked lists?
 
 - Polynomial Algebra
+- Can be used to implement stacks, queues
+- Can be used for chaining in hash tables
+- Operating systems use them for process queues, waiting queues
+- Sparse matrices
+- more,
 
 
