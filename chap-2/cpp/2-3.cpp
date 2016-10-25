@@ -55,9 +55,6 @@ void deleteNodeInMiddle(Node<T> *node){
 
 template <class T>
 void deleteNodeWithLeak(Node<T> *node){
-	if(node == 0 || node->next == 0){
-		return;
-	}
 	// Memory leak
 	// This method is simpler, but you'll have an extra node
 	// For example, if you have a list a -> b -> c -> d -> e -> NULL 
@@ -69,6 +66,15 @@ void deleteNodeWithLeak(Node<T> *node){
 	// 	     c
 	// Of course the head of your list is still 'a', and 'c' is not technically apart 
 	// of the list, but now you can't get a reference to 'c' any more
+	//
+	// In garbage collected languages (e.g. Java) this is fine because even 
+	// after deleting the list, the copy of 'c' will be eventually deleted
+	// However, in c++ we need to take care of leaks. That's why I would choose the 
+	// other method 'deleteNodeInMiddle'
+	if(node == 0 || node->next == 0){
+		return;
+	}
+	
 	
 	Node<T> *next = node->next;
 	node->data = next->data;
