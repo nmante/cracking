@@ -27,16 +27,14 @@ As mentioned before linked lists contain nodes
 - Python
 
 		class Node:
-			next = null
-			data = null
-			__init__(data, next):
-				data = data
-				next = next
+			def __init__(self, data=None, next=None):
+				self.data = data
+				self.next = next
 - C++
 
 		template
 		class Node<T>{
-		public:
+		private:
 			T data;
 			Node<T> *next;
 		
@@ -47,6 +45,9 @@ As mentioned before linked lists contain nodes
 				next = node;
 			}
 			~Node<T>(){ next = NULL; }
+			Node<T> *getNext(){ return next; }
+			T getData(){ return data; }
+			void setNext(Node<T>* _next){ next = _next; } 
 		};
 		
 The code above is the base for creating a linked list node. There are other methods that we can define for doing operations on the list.
