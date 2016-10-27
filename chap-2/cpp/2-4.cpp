@@ -15,35 +15,33 @@
  */
 
 template <class T>
-T addLinkedListNumbers(LinkedList<T> &list1, LinkedList<T> &list2);
+LinkedList<T> addLinkedListNumbers(LinkedList<T> &list1, LinkedList<T> &list2);
 
-template <class T>
-T addLinkedListNumbersRecursive(Node<T> *node1, Node<T> *node2, int position);
+//template <class T>
+//LinkedList<T> addLinkedListNumbersRecursive(Node<T> *node1, Node<T> *node2, int position);
 
 int main(){
-	LinkedList<int> ll(1);
+	LinkedList<int> ll(5);
 	ll.append(2);
-	ll.append(3);
-	ll.append(5);
 	std::cout << "List 1: " << ll << std::endl;
 
 	LinkedList<int> ll2(4);
 	ll2.append(5);
-	ll2.append(6);
 	std::cout << "List 2: " << ll2 << std::endl;
 
-	int sum = addLinkedListNumbers(ll, ll2);
-	std::cout << "Sum: " << sum << std::endl;
+	LinkedList<int> llSum = addLinkedListNumbers(ll, ll2);
+	std::cout << "Sum: " << llSum << std::endl;
 
-	int position = 0;
-	int sum2 = addLinkedListNumbersRecursive(ll.getHead(), ll2.getHead(), position); 
-	std::cout << "Sum recursive: " << sum2 << std::endl;
+	/*int position = 0;
+	LinkedList<int> llSum2 = addLinkedListNumbersRecursive(ll.getHead(), ll2.getHead(), position); 
+	std::cout << "Sum recursive: " << llSum2 << std::endl;
+	*/
 	
 	return 0;
 }
 
 template <class T>
-T addLinkedListNumbers(LinkedList<T> &list1, LinkedList<T> &list2){
+LinkedList<T> addLinkedListNumbers(LinkedList<T> &list1, LinkedList<T> &list2){
 	T sum = 0;
 	Node<T> *list1Tmp = list1.getHead();
 	Node<T> *list2Tmp = list2.getHead();
@@ -61,16 +59,20 @@ T addLinkedListNumbers(LinkedList<T> &list1, LinkedList<T> &list2){
 		position += 1;
 	}
 
-	return sum;
-}
+	LinkedList<T> result(sum % 10);
+	sum /= 10;
+	do {
+		T digit = sum % 10;
+		result.append(digit);
+		sum /= 10;
 
+	}while(sum > 0);
+
+	return result;
+}
+/*
 template <class T>
 T addLinkedListNumbersRecursive(Node<T> *node1, Node<T> *node2, int position){
-	/*
-	 * Logic here is to recursively sum each list
-	 * Then combine the sums at the end
-	 */
-
 	T sum = 0;
 
 	// If both nodes are null, we're at the end of each list
@@ -99,6 +101,7 @@ T addLinkedListNumbersRecursive(Node<T> *node1, Node<T> *node2, int position){
 
 	return sum;
 }
+*/
 /*
  * Solution:
  * 	3 -> 2 -> 1 -> 5 is the number 5123
