@@ -38,7 +38,7 @@ int main(){
 
 	Node<int> *head = ll.getHead();
 	Node<int> *tail = ll.find(10);
-	tail->next = head->next->next;
+	tail->next = head->next->next->next;
 
 	Node<int> *loopNode = returnLoopNode(ll);
 
@@ -83,8 +83,10 @@ Node<T> *returnLoopNodeNoBuffer(LinkedList<T> &ll){
 	// One moves at a 'slow' speed (one node jump per loop)
 	// The other moves at a 'fast' speed (two node jumps per loop)
 	// Eventually, the nodes will intersect (their addresses will be equal)
-	// When this happens, the "next next" node is the beginning of the loop
-	Node<T> *result = 0;
+	// When this happens, reset one of the nodes to the head
+	// Then move the two at the same pace/speed
+	// This intersection will be the loop start 
+	
 	Node<T> *runnerOne = ll.getHead();
 	Node<T> *runnerTwo = ll.getHead();
 
@@ -92,11 +94,25 @@ Node<T> *returnLoopNodeNoBuffer(LinkedList<T> &ll){
 		runnerOne = runnerOne->next;
 		runnerTwo = (runnerTwo->next == 0) ? 0 : runnerTwo->next->next;
 		if(runnerOne == runnerTwo){
-			result = runnerOne->next->next;
 			break;
 		}
 	}
-	return result;
+
+	// Either of these are null, then you can't have a loop 
+	if(!runnerTwo || !runnerOne){
+		return 0;
+	}
+
+	// Move one pointer back to the beginning of the list
+	// Then move both pointers at an equal pace. They will intersect at
+	// The loop start
+	runnerOne = ll.getHead();
+	while( runnerOne != runnerTwo){
+		runnerTwo = runnerTwo->next;
+		runnerOne = runnerOne->next;
+	}
+		
+	return runnerTwo;
 }
 
 /*
