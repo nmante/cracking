@@ -71,4 +71,39 @@ What's the point in linked lists?
 - Sparse matrices
 - more,
 
+##Interview Intuition/Problems
+
+- Remove duplicates from unsorted list
+	- Can do it in O(n) time with a buffer
+	- without a buffer, you compare each node at index i to all nodes at index i+1 to the length of the list 
+- Return Nth to last element
+	- where 1st to last element in a list like [a -> b -> c -> d] would be 'd' 
+	- method 1
+		- calculate length of list in O(n) time
+		- start at beginning of list again
+		- move until length - index == n, where n is the Nth number your interested in
+		- and index is a zero based index of node position in the list 
+	- method 2
+		- you can also do this recursively
+		- recursively go to end of list
+		- when you reach the end/bottom
+		- then start incrementing a counter
+		- when the counter equals n, return that node your looking at
+- Delete a node (middle of list) given a reference to that node
+	- Import note, this can't work for the end of the list
+		- try it out on paper and you'll see
+	- Two ways to do it
+	- Simple way (will lead to memory leak in C++)
+		- just copy the data from the next node into the current one
+		- then set the current node next to the next node's next 
+	- More complicated (no leak)
+		- Copy the data from next node into current one
+		- if the current nodes "next next" node is null
+			- delete the current->next node
+			- set current->next to null
+		- move to next node
+		
+- Find a loop within a linked list (see 2-5.cpp)
+	- with a buffer you store duplicate addresses, and simply return the address with a duplicate
+	- without a buffer, you can use two pointers. First move them at different speeds to find an intersection.. Then move them at the same speed to find the actual loop start
 
