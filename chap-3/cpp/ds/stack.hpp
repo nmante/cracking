@@ -8,15 +8,18 @@ template <class T>
 class Stack {
 
 private:
-	Node<T> *top;
+	Node<T> *top = NULL;
 
 public:
+	Stack(){};
 	Stack(T data){ top = new Node<T>(data); }
 	~Stack(){}
 	
 	Node<T> *pop();
+	T popData();
 	void push(T data);
 	T peek();
+	bool empty();
 
 	template <class A>
 	friend std::ostream& operator << (std::ostream &out, const Stack<A> &s);

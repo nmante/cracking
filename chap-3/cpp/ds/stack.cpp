@@ -14,6 +14,15 @@ Node<T> *Stack<T>::pop() {
 }
 
 template <class T>
+T Stack<T>::popData(){
+	Node<T> *result = pop();
+	if(result){
+		return result->getData();
+	}
+	return 0;
+}
+
+template <class T>
 void Stack<T>::push(T data) {
 	Node<T> *newNode = new Node<T>(data, this->top); 
 	top = newNode;
@@ -24,17 +33,22 @@ T Stack<T>::peek(){
 	return top ? top->data : 0; 
 }
 
+template <class T>
+bool Stack<T>::empty(){
+	return top == NULL ? true : false;
+}
+
 template <class A>
 std::ostream& operator <<(std::ostream &out, const Stack<A> &s){
-	Node<A> *top = s.top;
-	if(!top){
+	Node<A> *t = s.top;
+	if(!t){
 		out << "Stack empty" << std::endl;
 	}else{
 		out << "Stack" << std::endl;
 		out << " === " << std::endl;
-		while(top){
-			out << "| " << top->data << std::endl;
-			top = top->next;
+		while(t){
+			out << "| " << t->data << std::endl;
+			t = t->next;
 		}
 
 		out << " === " << std::endl;
