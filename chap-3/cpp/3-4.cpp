@@ -92,6 +92,8 @@ void solution1Driver(int argc, char *argv[]){
 
 namespace solution2 {
 
+// This solution is from Career Cup's github
+
 void towerOfHanoi(Stack<int> *a, Stack<int> *buff, Stack<int> *dest, int n){
 	if(n == 0){
 		return;
