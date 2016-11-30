@@ -40,6 +40,16 @@ int main(){
 	q.enqueue(3);
 	q.enqueue(2);
 
+	MyQueue<int> q2;
+
+	int a = q.peek();
+	std::cout << "Peek: " << a << std::endl;
+	std::cout << "Dequeue: " << q.dequeue() << std::endl;
+	std::cout << "Second Peek: " << q.peek() << std::endl;
+
+	std::cout << "Queue 2 peek: " << q2.peek() << std::endl;
+
+
 	return 0;
 }
 
