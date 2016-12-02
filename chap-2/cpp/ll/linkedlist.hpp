@@ -12,6 +12,7 @@ private:
 
 public:
 	LinkedList<T>(Node<T> *head);
+	LinkedList<T>(const LinkedList<T> &ll);
 	LinkedList<T>(T data); 
 	
 	// Insertion & traversion

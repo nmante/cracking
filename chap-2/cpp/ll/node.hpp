@@ -16,6 +16,10 @@ public:
 		this->data = data;
 		this->next = 0;
 	}
+	Node<T>(Node<T> &n){
+		this->data = n.data;
+		this->next = new Node(n.data);
+	}
 	~Node<T>(){
 		this->next = 0;
 	}

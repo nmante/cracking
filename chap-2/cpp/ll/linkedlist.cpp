@@ -12,6 +12,25 @@ LinkedList<T>::LinkedList(T data){
 }
 
 template <class T>
+LinkedList<T>::LinkedList(const LinkedList<T> &ll){
+	if(!ll.head){
+		return;
+	}
+	Node<T> *tmp = ll.head;
+	Node<T> *tmp2 = NULL;
+	while(tmp){
+		if(!this->head){
+			this->head = new Node<T>(tmp->data);
+			tmp2 = this->head;
+		}else{
+			tmp2->next = new Node<T>(tmp->data);
+			tmp2 = tmp2->next;
+		}
+		tmp = tmp->next;
+	}
+}
+
+template <class T>
 void LinkedList<T>::prepend(T data){
 	Node<T> *node = new Node<T>(data);
 	node->next = this->head;

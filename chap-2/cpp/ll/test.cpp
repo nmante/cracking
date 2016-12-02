@@ -22,5 +22,12 @@ int main(){
 	std::cout << "Appended 37" << std::endl;
 	ll.append(37);
 	std::cout << ll << std::endl;
+
+	LinkedList<int> ll2(ll);
+	std::cout << "Copy: " << ll2 << std::endl;
+
+	ll.append(4);
+	std::cout << "Orig after appending 4: " << ll << std::endl;
+	std::cout << "Copy after appending 4 to orig: " << ll2 << std::endl;
 	return 0;
 }
