@@ -27,5 +27,5 @@ public:
 	
 };
 
-#include "node.cpp"
+#include "node.tpp"
 #endif // __NODE_HPP__

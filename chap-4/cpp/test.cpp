@@ -1,5 +1,6 @@
 #include <iostream>
 #include "ds/bst/bstree.hpp"
+#include "ds/graph/tests.hpp"
 /*
  * Problem:
  */
@@ -18,6 +19,8 @@ void allPrint(BSTree<T> &bst){
 }
 
 int main(){
+	GraphTestSuite g;
+	g.runTests();
 	BSTree<int> bst;
 	bst.insert(bst.getRoot(), 4);
 	bst.insert(bst.getRoot(), 7);
@@ -58,6 +61,3 @@ int main(){
 	return 0;
 }
 
-/*
- * Solution:
- */

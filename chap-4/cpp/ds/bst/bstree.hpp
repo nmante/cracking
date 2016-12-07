@@ -47,6 +47,6 @@ public:
 
 };
 
-#include "bstree.cpp"
+#include "bstree.tpp"
 
 #endif // __BINARYTREE_HPP__
