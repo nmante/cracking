@@ -20,7 +20,7 @@ void allPrint(BSTree<T> &bst){
 
 int main(){
 	GraphTestSuite g;
-	g.runTests();
+	g.testFeatures();
 	BSTree<int> bst;
 	bst.insert(bst.getRoot(), 4);
 	bst.insert(bst.getRoot(), 7);

@@ -18,44 +18,61 @@ public:
 	~Feature(){}
 
 };
+
+class TestSuite {
+	int numTestsPassed = 0;
+	
+public:
+	std::vector<Feature> features;
+	TestSuite(){}
+	void testFeatures();
+};
+
+class GraphTestSuite : public TestSuite{
+public:
+	GraphTestSuite(); 
+	~GraphTestSuite(){}
+};
+
 namespace Tests{
-bool testAddEdge_Edge();
-bool testAddEdge_Vertices();
-bool testAddEdge_Names();
-bool testAddEdge_Cost();
+	bool testAddEdge_Edge();
+	bool testAddEdge_Vertices();
+	bool testAddEdge_Names();
+	bool testAddEdge_Cost();
 
-bool testRemoveEdge_Vertices();
-bool testRemoveEdge_Edge();
-bool testRemoveEdge_Names();
+	bool testRemoveEdge_Vertices();
+	bool testRemoveEdge_Edge();
+	bool testRemoveEdge_Names();
 
-bool testContainsEdge_Names();
-bool testContainsEdge_Edge();
+	bool testContainsEdge_Names();
+	bool testContainsEdge_Edge();
 
-bool testGetEdge_Vertex();
-bool testGetEdge_Names();
+	bool testGetEdge_Vertex();
+	bool testGetEdge_Names();
 
-bool testAddVertex_Vertex();
-bool testAddVertex_Name();
+	bool testGetEdgeSet();
+	bool testGetEdgeSet_Vertex();
+	bool testGetEdgeSet_Name();
 
-bool testContainsVertex_Vertex();
-bool testContainsVertex_Name();
+	bool testAddVertex_Vertex();
+	bool testAddVertex_Name();
 
-bool testRemoveVertex_Vertex();
-bool testRemoveVertex_Name();
+	bool testContainsVertex_Vertex();
+	bool testContainsVertex_Name();
 
-bool testIsEmpty();
-bool testSize();
+	bool testGetNeighbors_Vertex();
+	bool testGetNeighbors_Name();
+
+	bool testRemoveVertex_Vertex();
+	bool testRemoveVertex_Name();
+
+	bool testGetVertex_Name();
+	bool testGetVertexSet();
+
+	bool testIsEmpty();
+	bool testSize();
 }
 
-
-class GraphTestSuite{
-	std::vector<Feature> features;
-	int numTestsPassed = 0;
-public:
-	GraphTestSuite();
-	~GraphTestSuite(){}
-	void runTests();
-};
 
 
 #endif // __TESTS_HPP__
