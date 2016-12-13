@@ -10,6 +10,7 @@
 
 template <class T>
 class BSTree {
+public:
 	Node<T> *root = NULL;
 public:
 	BSTree() {}
