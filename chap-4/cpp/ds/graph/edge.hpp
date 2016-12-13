@@ -27,6 +27,7 @@ public:
 		weight(weight)
 	{}
 
+
 	// Destroy the edge
 	~Edge(){
 		start = nullptr;
@@ -48,6 +49,11 @@ public:
 		if(weight > other.weight) return false;
 
 		return false;
+	}
+
+	std::string toString(){
+		std::string out = this->start->getName() + " -> " + this->end->getName();
+		return out;
 	}
 
 	// A convenient way to print our edge

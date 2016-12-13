@@ -8,6 +8,9 @@ int main(){
 	auto e = g.addEdge(v1, v2);
 	std::cout << *e << std::endl;
 	std::cout << *(e->start) << std::endl;
+	std::cout << *v1 << std::endl;
+	std::cout << *v2 << std::endl;
+	std::cout << g << std::endl;
 
 	return 0;
 }
