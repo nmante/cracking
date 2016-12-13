@@ -43,12 +43,11 @@ public:
 
 	struct EdgePtrNameCmp {
 		bool operator()(const EdgePtr lhs, const EdgePtr rhs) const {
-			if(lhs->start->getName() < rhs->start->getName()){
-				return true;
-			}
-			if(lhs->end->getName() < rhs->end->getName()){
-				return true;
-			}
+			if(lhs->start->getName() < rhs->start->getName()) return true;
+			if(lhs->start->getName() > rhs->start->getName()) return false;
+			if(lhs->end->getName() < rhs->end->getName()) return true;
+			if(lhs->end->getName() > rhs->end->getName()) return false;
+
 			return false;
 		}
 	};
@@ -300,6 +299,7 @@ public:
 			if(count != this->edgeSet.size() - 1){
 				out += ", ";
 			}
+			count++;
 		}
 	
 		out += "}";

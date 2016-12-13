@@ -12,35 +12,36 @@
  */
 
 bool pathExists(const SimpleGraph & g, std::shared_ptr<Vertex> & start, std::shared_ptr<Vertex> &end){
-	// Get a reference to our start node
-	//auto start = g.getVertex(startName);
-	//auto end = g.getVertex(endName);
+	// Make sure these nodes exist 
 	if(!start || !end){
 		return false;
 	}
-
+	// Mark all nodes unvisited
+	for(auto v : g.getVertexSet()){
+		v->visited = false;
+	}
 	std::queue<std::shared_ptr<Vertex> > q;
-	std::set<std::shared_ptr<Vertex> > s;
 	q.push(start);
-	s.insert(start);
-	// Now we need to look through the neighbors of each node, starting
-	// with 'start' and see if we encounter 'end' at all.
-	// As we move through, keep track of 
 	while(!q.empty()){
+		// Take a node from our list 
 		auto v = q.front();
 		q.pop();
-		s.erase(v);
+		// Look at the nodes neighbors
 		for(auto neighbor : g.getNeighbors(v)){
+			// Stop if our 'end' node is a neighbor
 			if(neighbor == end){
 				return true;
 			}
-			auto ret = s.insert(neighbor);
-			if(ret.second){
+			// Otherwise, we should add this neighbor for processing
+			// if it hasn't been visited already 
+			if(neighbor->visited == false){
 				q.push(neighbor);
 			}
 		}
+		// We've examined all of node 'v' neighbors 
+		v->visited = true;
 	}	
-	
+		
 	return false;
 }
 
