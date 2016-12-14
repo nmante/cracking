@@ -4,8 +4,9 @@
 template <class T>
 class Node {
 public:
-	Node<T> *left = NULL;
-	Node<T> *right = NULL;
+	Node<T> *left = nullptr;
+	Node<T> *right = nullptr;
+	Node<T> *parent = nullptr;
 	T data;
 
 public:
@@ -16,8 +17,9 @@ public:
 		right(right)
 	{}
 	~Node(){
-		left = NULL;
-		right = NULL;
+		left = nullptr;
+		right = nullptr;
+		parent = nullptr;
 	}
 	Node<T> *remove(Node<T> *parent, T data);
 	T findMin();

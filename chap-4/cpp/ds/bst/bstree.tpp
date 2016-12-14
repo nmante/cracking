@@ -28,6 +28,7 @@ void BSTree<T>::insert(Node<T> *node, T data){
 			insert(left, data);
 		}else{
 			node->left = new Node<T>(data);
+			node->left->parent = node;
 		}
 		
 	}else{
@@ -36,6 +37,7 @@ void BSTree<T>::insert(Node<T> *node, T data){
 			insert(right, data);
 		}else{
 			node->right = new Node<T>(data);
+			node->right->parent = node;
 		}
 	}
 
