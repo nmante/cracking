@@ -185,17 +185,15 @@ public:
 		return this->edgeSet;
 	}
 
-	const std::set<EdgePtr> & getEdgeSet(VertexPtr v) const{
+	const std::set<EdgePtr> getEdgeSet(VertexPtr v) const{
 		auto vRet = this->vertexSet.find(v);
 		if(vRet != this->vertexSet.end())
 			return (*vRet)->edges;
-		return std::set<EdgePtr>();
+		std::set<EdgePtr> s;
+		return s;
 	}
-	const std::set<EdgePtr> & getEdgeSet(std::string vertexName) const{
+	const std::set<EdgePtr> getEdgeSet(std::string vertexName) const{
 		auto v = this->vertexMap.at(vertexName);
-		for(auto e : v->edges){
-			std::cout << *e << std::endl;
-		}
 		if(v)
 			return v->edges;
 		std::set<EdgePtr> s;

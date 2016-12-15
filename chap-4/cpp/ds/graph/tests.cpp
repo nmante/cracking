@@ -280,17 +280,10 @@ bool Tests::testGetEdgeSet_Name(){
 	g.addEdge(edge3);
 
 	auto edgeSet = g.getEdgeSet("A");
-	for(auto e : edgeSet){
-		std::cout << *e << std::endl;
-	}
-	//std::set<std::shared_ptr<Edge> , Graph<Vertex, Edge >::EdgePtrNameCmp>  s;
 	std::set<std::shared_ptr<Edge> >  s;
 	s.insert(edge1);
 	s.insert(edge2);
 	s.insert(edge3);
-	for(auto e : s){
-		std::cout << *e << std::endl;
-	}
 	if(edgeSet == s)
 		return true;
 	
